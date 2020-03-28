@@ -10,10 +10,18 @@ from data_tranform import df_global_case_date
 # graph config
 xaxis_limit = 40  # days since 100th case
 yaxis_limit = 5.5  # confirm case (logarithmic scale)
+
+thailand_color = '#12005B'
+
 focus_country = [
     'US', 'Spain', 'Italy',
     'China', 'Iran', 'United Kingdom',
     'Japan', 'Singapore', 'Hong Kong',
+]
+country_palette = [
+    '#DD8452', '#55A868', '#C44E52',
+    '#8172B3', '#937860', '#DA8BC3',
+    '#8C8C8C', '#CCB974', '#64B5CD',
 ]
 
 # prepare data for graph
@@ -74,7 +82,7 @@ for idx, country_name in enumerate(country_name_list):
         scatter_dict['mode'] = 'lines+markers'
         scatter_dict['line'] = {
             'width': 2,
-            'color': 'red',
+            'color': thailand_color,
         }
         scatter_dict['marker'] = {
             'symbol': 'circle',
@@ -89,9 +97,11 @@ for idx, country_name in enumerate(country_name_list):
             )
         )
     elif country_name in focus_country:
+        focus_idx = focus_country.index(country_name) - 1
         scatter_dict['mode'] = 'lines+markers'
         scatter_dict['line'] = {
             'width': 1,
+            'color': country_palette[focus_idx]
         }
         scatter_dict['marker'] = {
             'symbol': 'circle',
@@ -157,8 +167,8 @@ for d_case in double_case_list:
                 xaxis_limit
             ),
             'line': {
-                'color': 'rgb(255, 0, 0)',
-                'width': 2,
+                'color': '#a1a1a1',
+                'width': 1,
                 'dash': 'dot'
             },
         },
@@ -181,7 +191,7 @@ for d_case in double_case_list:
 # finalize figure
 layout = go.Layout(
     yaxis_type='log',
-    height=500,
+    height=400,
     shapes=shapes,
     annotations=annotations,
     margin={
