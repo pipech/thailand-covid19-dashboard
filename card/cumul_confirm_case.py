@@ -11,7 +11,7 @@ from data_tranform import df_global_case_date
 xaxis_limit = 40  # days since 100th case
 yaxis_limit = 5.5  # confirm case (logarithmic scale)
 
-thailand_color = '#12005B'
+thailand_color = '#0703ff'
 
 focus_country = [
     'US', 'Spain', 'Italy',
