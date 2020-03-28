@@ -10,24 +10,34 @@ df_global = df_global.groupby('Country/Region').sum()
 df_global.columns = pd.to_datetime(df_global.columns)
 
 
-def convert_to_days_infected(df_global, country):
+def convert_to_days_case(df_global, country):
     # get row
     country_row = df_global.loc[country]
 
     # select day since 100th case
-    infected_days = country_row[country_row >= 100]
+    case_days = country_row[country_row >= 100]
 
-    # convert to days in first infected
-    infected_days = infected_days.reset_index(drop=True)
+    # store date
+    case_date = case_days.copy()
+    case_date = case_date.reset_index()
+    case_date = case_date.drop(columns=country)
+    case_date = case_date.rename(columns={'index': country})
+    case_date[country] = case_date[country].dt.strftime('%Y-%m-%d')
+    case_date = case_date.T
 
-    return infected_days
+    # convert to days in first case
+    case_days = case_days.reset_index(drop=True).to_frame().T
+
+    return case_days, case_date
 
 
-infected_df_list = []
+case_df_list_days = []
+case_df_list_date = []
 
 for country in df_global.index.values:
-    infected_df_list.append(
-        convert_to_days_infected(df_global, country).to_frame().T
-    )
+    case_days, case_date = convert_to_days_case(df_global, country)
+    case_df_list_days.append(case_days)
+    case_df_list_date.append(case_date)
 
-df_global_infected_day = pd.concat(infected_df_list)
+df_global_case_days = pd.concat(case_df_list_days)
+df_global_case_date = pd.concat(case_df_list_date)

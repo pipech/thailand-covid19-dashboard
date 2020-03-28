@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 import math
 import plotly.graph_objs as go
+import textwrap
 
-from data_tranform import df_global_infected_day
+from data_tranform import df_global_case_days
+from data_tranform import df_global_case_date
 
 
 # graph config
@@ -18,9 +20,10 @@ focus_country = [
 data = []
 shapes = []
 annotations = []
-date_list = df_global_infected_day.columns.values
-country_name_list = df_global_infected_day.index.tolist()
-country_value_list = df_global_infected_day.to_numpy().tolist()
+date_list = df_global_case_days.columns.values
+country_name_list = df_global_case_days.index.tolist()
+country_case_list = df_global_case_days.to_numpy().tolist()
+country_date_list = df_global_case_date.to_numpy().tolist()
 
 
 def const_country_annot_dict(country_name, case_list):
@@ -45,8 +48,9 @@ def const_country_annot_dict(country_name, case_list):
 # adding line to graph
 for idx, country_name in enumerate(country_name_list):
     scatter_dict = {
-        'y': country_value_list[idx],
+        'y': country_case_list[idx],
         'x': date_list,
+        'text': country_date_list[idx],
         'name': country_name,
         'mode': 'lines',
         'line': {
@@ -59,6 +63,11 @@ for idx, country_name in enumerate(country_name_list):
         },
         'showlegend': False,
         'opacity': 0.75,
+        'hovertemplate': textwrap.dedent("""
+            Days since 100th case: <b>%{x}</b><br>
+            Confirm case: <b>%{y:,f}</b><br>
+            Date: <b>%{text}</b>
+        """),
     }
 
     if country_name == 'Thailand':
@@ -76,7 +85,7 @@ for idx, country_name in enumerate(country_name_list):
         annotations.append(
             const_country_annot_dict(
                 country_name=country_name,
-                case_list=country_value_list[idx]
+                case_list=country_case_list[idx]
             )
         )
     elif country_name in focus_country:
@@ -93,7 +102,7 @@ for idx, country_name in enumerate(country_name_list):
         annotations.append(
             const_country_annot_dict(
                 country_name=country_name,
-                case_list=country_value_list[idx]
+                case_list=country_case_list[idx]
             )
         )
 
