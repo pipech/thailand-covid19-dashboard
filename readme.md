@@ -1,0 +1,1 @@
+# Thailand focus COVID-19 dashboard
