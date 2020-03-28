@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import math
 import plotly.graph_objs as go
 
 from data_tranform import df_global_infected_day
@@ -15,9 +16,31 @@ focus_country = [
 
 # prepare data for graph
 data = []
+shapes = []
+annotations = []
 date_list = df_global_infected_day.columns.values
 country_name_list = df_global_infected_day.index.tolist()
 country_value_list = df_global_infected_day.to_numpy().tolist()
+
+
+def const_country_annot_dict(country_name, case_list):
+    # adding country name to line
+    max_case = max(case_list)
+
+    x = case_list.index(max_case) + 0.5
+    y = math.log(max_case, 10) + 0.1
+
+    if x >= xaxis_limit:
+        x = xaxis_limit - 2
+        y = math.log(case_list[x], 10) + 0.1
+
+    return {
+        'text': country_name,
+        'showarrow': False,
+        'x': x,
+        'y': y,
+    }
+
 
 # adding line to graph
 for idx, country_name in enumerate(country_name_list):
@@ -33,7 +56,9 @@ for idx, country_name in enumerate(country_name_list):
         'marker': {
             'size': 0.5,
             'symbol': 'circle',
-        }
+        },
+        'showlegend': False,
+        'opacity': 0.75,
     }
 
     if country_name == 'Thailand':
@@ -46,6 +71,14 @@ for idx, country_name in enumerate(country_name_list):
             'symbol': 'circle',
             'size': 3,
         }
+        scatter_dict['showlegend'] = True
+        scatter_dict['opacity'] = 1
+        annotations.append(
+            const_country_annot_dict(
+                country_name=country_name,
+                case_list=country_value_list[idx]
+            )
+        )
     elif country_name in focus_country:
         scatter_dict['mode'] = 'lines+markers'
         scatter_dict['line'] = {
@@ -55,6 +88,14 @@ for idx, country_name in enumerate(country_name_list):
             'symbol': 'circle',
             'size': 2,
         }
+        scatter_dict['showlegend'] = True
+        scatter_dict['opacity'] = 1
+        annotations.append(
+            const_country_annot_dict(
+                country_name=country_name,
+                case_list=country_value_list[idx]
+            )
+        )
 
     data.append(go.Scatter(scatter_dict))
 
@@ -94,9 +135,6 @@ double_case_list = [
         }
     },
 ]
-
-shapes = []
-annotations = []
 
 for d_case in double_case_list:
     shapes.append(
@@ -152,7 +190,8 @@ layout = go.Layout(
         'range': [
             0, xaxis_limit
         ]
-    }
+    },
+    showlegend=False,
 )
 
 fig = go.Figure(
