@@ -2,5 +2,6 @@
 
 ## Todo list
 
-[] Daily fetch data
-[] Add graph: https://www.youtube.com/watch?v=54XLXg4fYsc
+[ ] Daily fetch data
+
+[ ] Add graph: https://www.youtube.com/watch?v=54XLXg4fYsc
