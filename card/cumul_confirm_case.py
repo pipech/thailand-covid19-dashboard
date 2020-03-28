@@ -150,7 +150,7 @@ double_case_list = [
         'n_days': 7,
         'annot_dict': {
             'x': 35,
-            'y': 3.4,
+            'y': 3.6,
         }
     },
 ]
