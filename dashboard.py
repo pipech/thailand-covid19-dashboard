@@ -13,8 +13,8 @@ layout = dbc.Container([
     html.H1(
         _('Thailand focus covid-19 dashboard'),
         style={
-            'padding-top': '20px',
-            'padding-bottom': '20px',
+            'paddingTop': '20px',
+            'paddingBottom': '20px',
         }
     ),
     dbc.Card(
@@ -57,11 +57,11 @@ layout = dbc.Container([
                     html.Small(_('Data updated: {}').format(update_date)),
                 ],
                 style={
-                    'line-height': '1',
+                    'lineHeight': '1',
                 },
             ),
         ],
-        style={'margin-bottom': '20px'},
+        style={'marginBottom': '20px'},
     ),
     html.Small(
         [
@@ -79,6 +79,6 @@ layout = dbc.Container([
             ),
 
         ],
-        style={'padding-bottom': '20px'},
+        style={'paddingBottom': '20px'},
     ),
 ])
