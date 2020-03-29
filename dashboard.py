@@ -21,6 +21,13 @@ layout = dbc.Container([
                 [
                     dcc.Graph(
                         figure=fig,
+                        config={
+                            'modeBarButtonsToRemove': [
+                                'autoScale2d',
+                                'lasso2d',
+                                'hoverCompareCartesian',
+                            ]
+                        },
                     ),
                 ]
             ),
