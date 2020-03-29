@@ -5,6 +5,7 @@ import textwrap
 
 from data_tranform import df_global_case_days
 from data_tranform import df_global_case_date
+from translation import _
 
 
 # graph config
@@ -59,7 +60,7 @@ for idx, country_name in enumerate(country_name_list):
         'y': country_case_list[idx],
         'x': date_list,
         'text': country_date_list[idx],
-        'name': country_name,
+        'name': _(country_name),
         'mode': 'lines',
         'line': {
             'width': 0.5,
@@ -71,11 +72,11 @@ for idx, country_name in enumerate(country_name_list):
         },
         'showlegend': False,
         'opacity': 0.75,
-        'hovertemplate': textwrap.dedent("""
-            Days since 100th case: <b>%{x}</b><br>
-            Confirm case: <b>%{y:,f}</b><br>
-            Date: <b>%{text}</b>
-        """),
+        'hovertemplate': _((
+            'Days since 100th case: <b>%{x}</b><br>'
+            'Confirm case: <b>%{y:,f}</b><br>'
+            'Date: <b>%{text}</b>'
+        )),
     }
 
     if country_name == 'Thailand':
@@ -92,7 +93,7 @@ for idx, country_name in enumerate(country_name_list):
         scatter_dict['opacity'] = 1
         annotations.append(
             const_country_annot_dict(
-                country_name=country_name,
+                country_name=_(country_name),
                 case_list=country_case_list[idx]
             )
         )
@@ -111,7 +112,7 @@ for idx, country_name in enumerate(country_name_list):
         scatter_dict['opacity'] = 1
         annotations.append(
             const_country_annot_dict(
-                country_name=country_name,
+                country_name=_(country_name),
                 case_list=country_case_list[idx]
             )
         )
@@ -174,7 +175,7 @@ for d_case in double_case_list:
         },
     )
     annot_dict = {
-        'text': 'Double case <br> every {} day(s)'.format(
+        'text': _('Double case <br> every {} day(s)').format(
             d_case.get('n_days')
         ),
         'showarrow': False,
@@ -205,7 +206,7 @@ layout = go.Layout(
             2, yaxis_limit
         ],
         'title': {
-            'text': 'Cumulative number of confirmed cases',
+            'text': _('Cumulative number of confirmed cases'),
             'font': {
                 'size': 5,
             },
@@ -216,7 +217,7 @@ layout = go.Layout(
             0, xaxis_limit
         ],
         'title': {
-            'text': 'Number of days since 100th case',
+            'text': _('Number of days since 100th case'),
             'font': {
                 'size': 5,
             },

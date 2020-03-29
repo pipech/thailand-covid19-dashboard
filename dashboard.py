@@ -6,9 +6,12 @@ import dash_html_components as html
 from card.cumul_confirm_case import fig
 from data_tranform import update_date
 
+from translation import _
+
+
 layout = dbc.Container([
     html.H1(
-        'Thailand focus covid-19 dashboard',
+        _('Thailand focus covid-19 dashboard'),
         style={
             'padding-top': '20px',
             'padding-bottom': '20px',
@@ -16,7 +19,7 @@ layout = dbc.Container([
     ),
     dbc.Card(
         [
-            dbc.CardHeader('Cumulative number of confirm cases, by number of days since 100th case'),
+            dbc.CardHeader(_('Cumulative number of confirm cases, by number of days since 100th case')),
             dbc.CardBody(
                 [
                     dcc.Graph(
@@ -34,7 +37,7 @@ layout = dbc.Container([
             dbc.CardFooter(
                 [
                     html.Small([
-                        'Source: ',
+                        _('Data source: '),
                         html.A(
                             'https://data.humdata.org/dataset/novel-coronavirus-2019-ncov-cases',
                             href='https://data.humdata.org/dataset/novel-coronavirus-2019-ncov-cases',
@@ -43,7 +46,7 @@ layout = dbc.Container([
                     ]),
                     html.Br(),
                     html.Small([
-                        'Graph design: ',
+                        _('Graph design: '),
                         html.A(
                             'https://www.ft.com/coronavirus-latest',
                             href='https://www.ft.com/coronavirus-latest',
@@ -51,7 +54,7 @@ layout = dbc.Container([
                         ),
                     ]),
                     html.Br(),
-                    html.Small('Data updated: {}'.format(update_date)),
+                    html.Small(_('Data updated: {}').format(update_date)),
                 ],
                 style={
                     'line-height': '1',
