@@ -10,7 +10,11 @@ app = dash.Dash(
 )
 app.layout = layout
 
+# for aws elasticbeanstalk
+application = app.server
+
 if __name__ == '__main__':
+    # for development
     app.run_server(
-        port=80,
+        debug=True,
     )
