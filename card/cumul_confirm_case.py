@@ -46,7 +46,7 @@ def const_country_annot_dict(country_name, case_list, color):
         x = xaxis_limit - 2
         y = math.log(case_list[x], 10) + 0.1
 
-    return {
+    annot_dict = {
         'text': country_name,
         'showarrow': False,
         'x': x,
@@ -55,6 +55,11 @@ def const_country_annot_dict(country_name, case_list, color):
             'color': color,
         },
     }
+
+    if country_name == _('Thailand'):
+        annot_dict['font']['size'] = 14
+
+    return annot_dict
 
 
 # adding line to graph
