@@ -3,11 +3,26 @@ import dash_bootstrap_components as dbc
 
 from dashboard import layout
 
+# meta data
+title = 'Thailand covid19 dashboard'
+description = 'Covid19 tracking dashboard for Thailand'
+url = 'https://covid19.space.codes'
 
 app = dash.Dash(
     __name__,
+    meta_tags=[
+        # Primary meta tags
+        {'name': 'title', 'content': title},
+        {'name': 'description', 'content': description},
+        # Open graph meta tags
+        {'property': 'og:type', 'content': 'website'},
+        {'property': 'og:url', 'content': url},
+        {'property': 'og:title', 'content': title},
+        {'property': 'og:description', 'content': description},
+    ],
     external_stylesheets=[dbc.themes.BOOTSTRAP],
 )
+app.title = title
 app.layout = layout
 
 # for aws elasticbeanstalk
