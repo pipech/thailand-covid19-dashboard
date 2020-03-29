@@ -35,7 +35,7 @@ country_case_list = df_global_case_days.to_numpy().tolist()
 country_date_list = df_global_case_date.to_numpy().tolist()
 
 
-def const_country_annot_dict(country_name, case_list):
+def const_country_annot_dict(country_name, case_list, color):
     # adding country name to line
     max_case = max(case_list)
 
@@ -51,6 +51,9 @@ def const_country_annot_dict(country_name, case_list):
         'showarrow': False,
         'x': x,
         'y': y,
+        'font': {
+            'color': color,
+        },
     }
 
 
@@ -94,15 +97,17 @@ for idx, country_name in enumerate(country_name_list):
         annotations.append(
             const_country_annot_dict(
                 country_name=_(country_name),
-                case_list=country_case_list[idx]
+                case_list=country_case_list[idx],
+                color=thailand_color,
             )
         )
     elif country_name in focus_country:
         focus_idx = focus_country.index(country_name) - 1
+        country_color = country_palette[focus_idx]
         scatter_dict['mode'] = 'lines+markers'
         scatter_dict['line'] = {
             'width': 1,
-            'color': country_palette[focus_idx]
+            'color': country_color
         }
         scatter_dict['marker'] = {
             'symbol': 'circle',
@@ -113,7 +118,8 @@ for idx, country_name in enumerate(country_name_list):
         annotations.append(
             const_country_annot_dict(
                 country_name=_(country_name),
-                case_list=country_case_list[idx]
+                case_list=country_case_list[idx],
+                color=country_color,
             )
         )
 
@@ -179,10 +185,10 @@ for d_case in double_case_list:
             d_case.get('n_days')
         ),
         'showarrow': False,
-        # 'font': {
-        #     'size': 16,
-        #     'color': '#c7c7c7',
-        # },
+        'font': {
+            'size': 7,
+            'color': '#a1a1a1',
+        },
     }
     annotations.append(
         {**annot_dict, **d_case.get('annot_dict')}
