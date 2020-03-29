@@ -46,7 +46,7 @@ layout = dbc.Container([
                     ]),
                     html.Br(),
                     html.Small([
-                        _('Graph design: '),
+                        _('Graph reference: '),
                         html.A(
                             'https://www.ft.com/coronavirus-latest',
                             href='https://www.ft.com/coronavirus-latest',

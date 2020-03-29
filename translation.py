@@ -23,7 +23,7 @@ def _(text, lang='TH'):
         'Cumulative number of confirm cases, by number of days since 100th case':
             'กราฟแสดงจำนวนผู้ติดเชื้อโควิด-19 สะสม นับจากวันที่มีผู้ติดเชื้อถึง 100 ราย',
         'Data source: ': 'แหล่งข้อมูล: ',
-        'Graph design: ': 'ผู้ออกแบบกราฟ: ',
+        'Graph reference: ': 'รูปแบบกราฟอ้างอิงจาก: ',
         'Data updated: {}': 'อัพเดทล่าสุด: {}',
         (
             'Days since 100th case: <b>%{x}</b><br>'
@@ -36,8 +36,8 @@ def _(text, lang='TH'):
                 'วันที่: <b>%{text}</b>'
             ),
         # meta
-        'Covid19 tracking dashboard for Thailand':
-            'อัพเดทข้อมูลสถานการณ์ผู้ติดเชื้อโควิด-19 ในประเทศไทย',
+        'Covid19 tracking dashboard for Thailand, Daily updated':
+            'อัพเดทข้อมูลรายวัน สถานการณ์ผู้ติดเชื้อโควิด-19 ในประเทศไทย',
     }
 
     translated_text = th_dict.get(text, text)

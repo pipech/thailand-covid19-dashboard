@@ -7,7 +7,7 @@ from translation import _
 
 # meta data
 title = _('Thailand focus covid-19 dashboard')
-description = _('Covid19 tracking dashboard for Thailand')
+description = _('Covid19 tracking dashboard for Thailand, Daily updated')
 url = 'https://covid19.space.codes'
 
 app = dash.Dash(
