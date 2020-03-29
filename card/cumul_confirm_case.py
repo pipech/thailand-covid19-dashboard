@@ -227,6 +227,7 @@ layout = go.Layout(
                 'size': 5,
             },
         },
+        'fixedrange': True,
     },
     xaxis={
         'range': [
@@ -238,6 +239,7 @@ layout = go.Layout(
                 'size': 5,
             },
         },
+        'fixedrange': True,
     },
     showlegend=False,
 )
