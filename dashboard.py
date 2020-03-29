@@ -39,8 +39,8 @@ layout = dbc.Container([
                     html.Small([
                         _('Data source: '),
                         html.A(
-                            'https://data.humdata.org/dataset/novel-coronavirus-2019-ncov-cases',
-                            href='https://data.humdata.org/dataset/novel-coronavirus-2019-ncov-cases',
+                            '2019 Novel Coronavirus COVID-19 (2019-nCoV) Data Repository by Johns Hopkins CSSE',
+                            href='https://github.com/CSSEGISandData/COVID-19',
                             target='blank',
                         ),
                     ]),

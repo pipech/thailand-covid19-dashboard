@@ -1,14 +1,15 @@
 import pandas as pd
 
+from datetime import datetime
 
 # read dataset
 df_thai = pd.read_excel('dataset/covid-19-daily-2.xlsx')
-df_global = pd.read_csv('dataset/time_series_covid19_confirmed_global.csv')
+df_global = pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv')
 
 df_global = df_global.drop(columns=['Lat', 'Long', 'Province/State'])
 df_global = df_global.groupby('Country/Region').sum()
 df_global.columns = pd.to_datetime(df_global.columns)
-update_date = max(df_global.columns.tolist()).strftime('%Y-%m-%d')
+update_date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
 
 def convert_to_days_case(df_global, country):
