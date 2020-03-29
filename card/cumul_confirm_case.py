@@ -197,6 +197,9 @@ for d_case in double_case_list:
 
 # finalize figure
 layout = go.Layout(
+    font={
+        'family': 'Sarabun',
+    },
     yaxis_type='log',
     height=400,
     shapes=shapes,
