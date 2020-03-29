@@ -18,11 +18,13 @@ focus_country = [
     'US', 'Spain', 'Italy',
     'China', 'Iran', 'United Kingdom',
     'Japan', 'Singapore', 'Hong Kong',
+    'Korea, South', 'Germany',
 ]
 country_palette = [
     '#DD8452', '#55A868', '#C44E52',
     '#8172B3', '#937860', '#DA8BC3',
     '#8C8C8C', '#CCB974', '#64B5CD',
+    '#937860', '#c76e4e',
 ]
 
 # prepare data for graph

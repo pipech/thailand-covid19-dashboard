@@ -11,6 +11,8 @@ def _(text, lang='TH'):
         'Japan': 'ญี่ปุ่น',
         'Singapore': 'สิงคโปร์',
         'Hong Kong': 'ฮ่องกง',
+        'Korea, South': 'เกาหลีใต้',
+        'Germany': 'เยอรมนี',
         # text
         'Double case <br> every {} day(s)':
             'ผู้ติดเชื้อเพิ่มขึ้นเป็นสองเท่า<br>ทุก {} วัน',
