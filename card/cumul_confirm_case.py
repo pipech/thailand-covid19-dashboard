@@ -203,12 +203,24 @@ layout = go.Layout(
     yaxis={
         'range': [
             2, yaxis_limit
-        ]
+        ],
+        'title': {
+            'text': 'Cumulative number of confirmed cases',
+            'font': {
+                'size': 5,
+            },
+        },
     },
     xaxis={
         'range': [
             0, xaxis_limit
-        ]
+        ],
+        'title': {
+            'text': 'Number of days since 100th case',
+            'font': {
+                'size': 5,
+            },
+        },
     },
     showlegend=False,
 )
