@@ -2,10 +2,12 @@ import dash
 import dash_bootstrap_components as dbc
 
 from dashboard import layout
+from translation import _
+
 
 # meta data
-title = 'Thailand covid19 dashboard'
-description = 'Covid19 tracking dashboard for Thailand'
+title = _('Thailand focus covid-19 dashboard')
+description = _('Covid19 tracking dashboard for Thailand')
 url = 'https://covid19.space.codes'
 
 app = dash.Dash(

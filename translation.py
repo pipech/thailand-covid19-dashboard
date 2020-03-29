@@ -35,6 +35,9 @@ def _(text, lang='TH'):
                 'จำนวนผู้ติดเชื้อ: <b>%{y:,f}</b><br>'
                 'วันที่: <b>%{text}</b>'
             ),
+        # meta
+        'Covid19 tracking dashboard for Thailand':
+            'อัพเดทข้อมูลสถานการณ์ผู้ติดเชื้อโควิด-19 ในประเทศไทย',
     }
 
     translated_text = th_dict.get(text, text)
