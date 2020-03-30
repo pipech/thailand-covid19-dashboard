@@ -40,6 +40,11 @@ def _(text, lang='TH'):
         # meta
         'Covid19 tracking dashboard for Thailand, Daily updated':
             'อัพเดทข้อมูลรายวัน สถานการณ์ผู้ติดเชื้อโควิด-19 ในประเทศไทย',
+        # summary
+        'Cases': 'ติดเชื้อสะสม',
+        'Remedied': 'หายแล้ว',
+        'Hospitalized': 'กำลังรักษา',
+        'Deceased': 'เสียชีวิต',
     }
 
     translated_text = th_dict.get(text, text)

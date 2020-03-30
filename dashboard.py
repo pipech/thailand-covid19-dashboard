@@ -3,66 +3,28 @@ import dash_core_components as dcc
 import dash_bootstrap_components as dbc
 import dash_html_components as html
 
-from card.cumul_confirm_case import fig
-from data_tranform import update_date
+from card.cumul_confirm_case import get_layout as get_cumul_confirm_case
+from card.case_summary import get_layout as get_case_summary
 
 from translation import _
+from data_tranform import get_data
 
+
+d = get_data()
 
 layout = dbc.Container([
     html.H1(
         _('Thailand focus covid-19 dashboard'),
         style={
             'paddingTop': '20px',
-            'paddingBottom': '20px',
+            'fontSize': '2rem',
         }
     ),
-    dbc.Card(
-        [
-            dbc.CardHeader(_('Cumulative number of confirm cases, by number of days since 100th case')),
-            dbc.CardBody(
-                [
-                    dcc.Graph(
-                        figure=fig,
-                        config={
-                            'modeBarButtonsToRemove': [
-                                'autoScale2d',
-                                'lasso2d',
-                                'hoverCompareCartesian',
-                            ]
-                        },
-                    ),
-                ]
-            ),
-            dbc.CardFooter(
-                [
-                    html.Small([
-                        _('Data source: '),
-                        html.A(
-                            '2019 Novel Coronavirus COVID-19 (2019-nCoV) Data Repository by Johns Hopkins CSSE',
-                            href='https://github.com/CSSEGISandData/COVID-19',
-                            target='blank',
-                        ),
-                    ]),
-                    html.Br(),
-                    html.Small([
-                        _('Graph reference: '),
-                        html.A(
-                            'https://www.ft.com/coronavirus-latest',
-                            href='https://www.ft.com/coronavirus-latest',
-                            target='blank',
-                        ),
-                    ]),
-                    html.Br(),
-                    html.Small(_('Data updated: {}').format(update_date)),
-                ],
-                style={
-                    'lineHeight': '1',
-                },
-            ),
-        ],
-        style={'marginBottom': '20px'},
+    html.P(
+        _('Data updated: {}').format(d.get('update_date'))
     ),
+    get_case_summary(d.get('today_dict')),
+    get_cumul_confirm_case(d),
     html.Small(
         [
             'Github: ',
