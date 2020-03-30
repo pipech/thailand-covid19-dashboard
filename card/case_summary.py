@@ -9,13 +9,13 @@ def get_layout(today_dict):
     def gen_small_info_card(title, class_name=''):
         dif_val = today_dict.get(title).get('dif_val')
 
-        dif_text = '[-]'
+        dif_text = _('[Stable]')
         if dif_val > 0:
-            dif_text = '[+{:,}]'.format(
+            dif_text = _('[Increase {:,}]').format(
                 today_dict.get(title).get('dif_val')
             )
         elif dif_val < 0:
-            dif_text = '[-{:,}]'.format(
+            dif_text = _('[Decrease {:,}]').format(
                 today_dict.get(title).get('dif_val')
             )
 
@@ -40,8 +40,8 @@ def get_layout(today_dict):
                         html.Span(
                             dif_text,
                             style={
-                                'fontSize': '1rem',
-                                'paddingLeft': '5px',
+                                'fontSize': '0.8rem',
+                                'paddingLeft': '10px',
                             },
                         ),
                     ], style={'marginBottom': '0'}),

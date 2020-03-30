@@ -45,6 +45,9 @@ def _(text, lang='TH'):
         'Remedied': 'หายแล้ว',
         'Hospitalized': 'กำลังรักษา',
         'Deceased': 'เสียชีวิต',
+        '[Stable]': '[คงที่]',
+        '[Increase {:,}]': '[เพิ่มขึ้น {:,}]',
+        '[Decrease {:,}]': '[ลดลง {:,}]',
     }
 
     translated_text = th_dict.get(text, text)
